@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  php:
+    image: 'php:7.4-apache'
+    container_name: projetos_php
+    restart: always
+    ports:
+      - '8080:80'
+      - "443:443"
+    volumes:
+    - /home/mw/Documentos/Projetos_PHP:/var/www/html
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: projetos_mysql
+    ports:
+      - 3307:3306
+    volumes:
+      - /var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=sistema_login_db
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+ 
+ 
+ 
